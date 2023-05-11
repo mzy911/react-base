@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, matchRoutes, Link } from "react-router-dom";
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import router from "../router/index";
-import "./index.css";
-const { Header, Content, Sider } = Layout;
+import "./index.scss";
+const { Header, Content } = Layout;
 
 const menuTree = (routes, res = []) => {
   routes.forEach((route) => {
@@ -29,11 +29,9 @@ const menuTree = (routes, res = []) => {
 
 const AppLayout = () => {
   const [defaultSelectedKeys, setDefaultSelectedKeys] = useState([]);
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState([]);
-  const [breadItem, setBreadItem] = useState([]);
   const [init, setInit] = useState(false);
   const local = useLocation();
-  const lala = menuTree(router);
+  const menuItems = menuTree(router);
 
   // 检测路由的变化，高亮导航
   useEffect(() => {
@@ -53,8 +51,6 @@ const AppLayout = () => {
     }
 
     setDefaultSelectedKeys(pathArr);
-    setDefaultOpenKeys(pathArr);
-    setBreadItem(breadArr);
     setInit(true);
   }, [local.pathname]);
   if (!init) return null;
@@ -66,55 +62,26 @@ const AppLayout = () => {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={defaultSelectedKeys}
-          items={lala}
+          items={menuItems}
         />
       </Header>
 
-      <Layout>
-        {/* 侧边栏 */}
-        <Sider width={200} className="site-layout-background">
-          <Menu
-            mode="inline"
-            theme="dark"
-            defaultSelectedKeys={defaultSelectedKeys}
-            defaultOpenKeys={defaultOpenKeys}
-            style={{
-              height: "100%",
-              borderRight: 0,
-            }}
-            items={lala}
-          />
-        </Sider>
-
-        {/* 布局 */}
-        <Layout
+      {/* 布局 */}
+      <Layout
+        style={{
+          padding: "0 24px 24px"
+        }}
+      >
+        <Content
+          className="site-layout-background"
           style={{
-            padding: "0 24px 24px",
+            padding: 24,
+            margin: 0,
           }}
         >
-          {/* 面包屑导航 */}
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            {breadItem.map((item) => (
-              <Breadcrumb.Item key={Math.random()}>{item}</Breadcrumb.Item>
-            ))}
-          </Breadcrumb>
-
-          <Content
-            className="site-layout-background"
-            style={{
-              padding: 24,
-              margin: 0,
-              minHeight: 280,
-            }}
-          >
-            {/* 渲染子路由内容 */}
-            <Outlet></Outlet>
-          </Content>
-        </Layout>
+          {/* 渲染子路由内容 */}
+          <Outlet></Outlet>
+        </Content>
       </Layout>
     </Layout>
   );

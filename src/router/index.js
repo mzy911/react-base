@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import AppLayout from "../AppLayout";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 // 1、解决页面刷新闪屏
 // 2、Applayout 不使用懒加载
@@ -30,8 +30,8 @@ const router = [
         path: "/",
       },
       {
-        path: "/about",
         label: "操作",
+        path: "/about",
         element: lazyLoad(<About />),
       },
     ],
