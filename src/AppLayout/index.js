@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, matchRoutes, Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import router from "../router/index";
+import router from "@/router/index";
 import "./index.scss";
 const { Header, Content } = Layout;
 
