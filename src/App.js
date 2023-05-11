@@ -1,28 +1,9 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Home from "./views/Home";
-import About from "./views/About";
+import React from 'react'
+import {useRoutes} from 'react-router-dom'
+import router from './router'
 
-function App() {
-  return (
-    <div className="App">
-      <div>
-        <button>
-          <Link to="/">Home</Link>
-        </button>
-        <button>
-          <Link to="/about">About</Link>
-        </button>
-      </div>
 
-      <header className="App-header">
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
-        </Routes>
-      </header>
-    </div>
-  );
+const App = () => {
+  return useRoutes(router)
 }
-
-export default App;
+export default App
