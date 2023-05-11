@@ -9,6 +9,7 @@ const addCustomize = () => config => {
   return config;
 }
 
+// 覆盖、扩展 webpack 配置
 module.exports = {
   webpack: override(
     addCustomize()
