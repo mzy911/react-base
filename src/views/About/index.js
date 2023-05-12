@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import {connect} from 'react-redux';
 
-const About = () => {
+const About = ({ id_token}) => {
+  
   return <div>
-    About
+    <div>{id_token? '已登陆':'未登录'}</div>
   </div>
-}
+};
 
-export default About;
+
+export default connect(
+  state => state.loginReducer,
+)(About);

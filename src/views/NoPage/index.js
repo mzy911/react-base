@@ -6,7 +6,7 @@ function NoPage (){
       textAlign: 'center',
       verticalAlign: 'middle',
       fontSize: '58px',
-      marginTop: '300px'
+      paddingTop: '300px'
     }}>
       404
     </div>
