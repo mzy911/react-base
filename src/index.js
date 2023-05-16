@@ -17,9 +17,10 @@ const epicMiddleware = createEpicMiddleware()
 const history = createBrowserHistory();
 const epics = [];
 const reducers = {
-  // key 必须是 'router'  [详情](https://github.com/supasate/connected-react-router/tree/v6.0.0#usage)
-  router: connectRouter(history),
+  router: connectRouter(history), // key 必须是 'router'
 };
+
+console.log("reducers", reducers);
 
 models.forEach((v) => {
   if (v.epics) {
@@ -31,17 +32,18 @@ models.forEach((v) => {
   }
 });
 
+
 const middlewareList = [
   routerMiddleware(history),
-  epicMiddleware.run(combineEpics(...epics))
-  // createEpicMiddleware(combineEpics(...epics)),
+  epicMiddleware
 ];
 
 const store = createStore(
   combineReducers(reducers),
-  {},
-  composeWithDevTools(applyMiddleware(...middlewareList))
+  applyMiddleware(...middlewareList)  // composeWithDevTools()
 );
+
+epicMiddleware.run(combineEpics(...epics))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

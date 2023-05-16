@@ -4,7 +4,7 @@ import _isArray from "lodash/isArray";
 import _isFunction from "lodash/isFunction";
 import { generateAction } from "./action";
 import FetchBizError from "../utils/fetch-biz";
-import { actions as errorActions } from "@/model/error";
+// import { actions as errorActions } from "@/model/error";
 
 // 处理action、原理类似于 redux-thunk
 function toAction(action, payload) {
@@ -29,7 +29,7 @@ function generateObservableErrorActionFn(actions, ignore, ignoreAccessDenied) {
       if (
         !(error instanceof FetchBizError && error.getCode() === "AccessDenied")
       ) {
-        actionArr.push(errorActions.caught(error));
+        // actionArr.push(errorActions.caught(error));
       }
     }
 

@@ -11,5 +11,4 @@ const epics = [
     ACTION.FETCH_UID_ENET_ERROR
   ),
 ];
-
 export default combineEpics(...epics);
