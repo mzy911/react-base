@@ -13,45 +13,43 @@ import "@/common/style/reset.scss";
 import App from "./App";
 
 
-const epicMiddleware = createEpicMiddleware()
-const history = createBrowserHistory();
-const epics = [];
-const reducers = {
-  router: connectRouter(history), // key 必须是 'router'
-};
+// const epicMiddleware = createEpicMiddleware()
+// const history = createBrowserHistory();
+// const epics = [];
+// const reducers = {
+//   router: connectRouter(history), // key 必须是 'router'
+// };
 
-console.log("reducers", reducers);
+// console.log("reducers", reducers);
 
-models.forEach((v) => {
-  if (v.epics) {
-    epics.push(v.epics);
-  }
+// models.forEach((v) => {
+//   if (v.epics) {
+//     epics.push(v.epics);
+//   }
 
-  if (v.reducers) {
-    reducers[v.namespace] = v.reducers;
-  }
-});
+//   if (v.reducers) {
+//     reducers[v.namespace] = v.reducers;
+//   }
+// });
 
 
-const middlewareList = [
-  routerMiddleware(history),
-  epicMiddleware
-];
+// const middlewareList = [
+//   routerMiddleware(history),
+//   epicMiddleware
+// ];
 
-const store = createStore(
-  combineReducers(reducers),
-  applyMiddleware(...middlewareList)  // composeWithDevTools()
-);
+// const store = createStore(
+//   combineReducers(reducers),
+//   applyMiddleware(...middlewareList)  // composeWithDevTools()
+// );
 
-epicMiddleware.run(combineEpics(...epics))
+// epicMiddleware.run(combineEpics(...epics))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
   </React.StrictMode>
 );
