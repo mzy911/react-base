@@ -24,7 +24,9 @@ export const generateActionFn = (type) => (payload) => {
 
 
 // 3、用于 connect 的 dispatchXx 方法
-export const generateActionDispatcher = (dispatch, actionFn) => (...args) => dispatch(actionFn(...args));
+export const generateActionDispatcher = (dispatch, actionFn) => (...args) => {
+  return dispatch(actionFn(...args));
+}
 
 
 // 4、产出单个 action type 的创建器

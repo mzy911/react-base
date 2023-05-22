@@ -6,9 +6,10 @@ import dataUidEnet from "@/data/list";
 const epics = [
   createEpicFromPromise(
     dataUidEnet, // 请求数据
-    ACTION.FETCH_UID_ENET,
-    ACTION.FETCH_UID_ENET_OK,
-    ACTION.FETCH_UID_ENET_ERROR
+    ACTION.FETCH_LIST,
+    ACTION.FETCH_LIST_OK,
+    ACTION.FETCH_LIST_ERROR
   ),
 ];
+// export default epics;
 export default combineEpics(...epics);

@@ -17,22 +17,20 @@ export const generateSimpleReducer =
   };
 
 // 生成加载数据的 reducer 方法，用于记录数据及其加载状态
-export const generateLoadingReducer = (
-  actionType,
-  actionTypeOk,
-  actionTypeError,
-  initialResult,
-  extraReducers,
-  extraHandler,
-  catchError
-) =>
-  function (
-    state = {
-      loading: STATUS_LOADING.IDLE, // 加载状态 STATUS_LOADING
-      result: initialResult,
-    },
+export const generateLoadingReducer =
+  (
+    actionType,
+    actionTypeOk,
+    actionTypeError,
+    initialResult,
+    extraReducers,
+    extraHandler,
+    catchError
+  ) =>
+  (
+    state = { loading: STATUS_LOADING.IDLE, result: initialResult },
     { type, payload }
-  ) {
+  ) => {
     let startHandler = null;
     let okHandler = null;
     let errorHandler = null;
@@ -58,6 +56,7 @@ export const generateLoadingReducer = (
 
       // 加载成功
       case actionTypeOk:
+
         if (okHandler) {
           return okHandler(state, payload, STATUS_LOADING.LOADED);
         }
