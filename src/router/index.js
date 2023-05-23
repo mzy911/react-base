@@ -6,8 +6,8 @@ import AppLayout from "@/AppLayout";
 // 2、Applayout 不使用懒加载
 // 3、懒加载的组件，使用 Suspense 包裹
 const Home = lazy(() => import(/* webpackChunkName:'home' */ "@/views/Home"));
-const Rxjs = lazy(() =>
-  import(/* webpackChunkName:'Rxjs' */ "@/views/Rxjs")
+const About = lazy(() =>
+  import(/* webpackChunkName:'About' */ "@/views/About")
 );
 const NoPage = lazy(() =>
   import(/* webpackChunkName:'NoPage' */ "@/views/NoPage")
@@ -30,9 +30,9 @@ const router = [
         path: "/",
       },
       {
-        label: "Rxjs",
-        path: "/rxjs",
-        element: lazyLoad(<Rxjs />),
+        label: "监听数据",
+        path: "/about",
+        element: lazyLoad(<About />),
       },
     ],
   },

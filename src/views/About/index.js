@@ -12,7 +12,7 @@ const About = ({ list, fetchList }) => {
       <h1>操作</h1>
       {list?.data?.map((item) => {
         return (
-          <div>
+          <div key={item.name}>
             {" "}
             姓名：{item.name} 年龄：{item.age}
           </div>
