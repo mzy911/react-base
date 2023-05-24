@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 // import 'rxjs/add/observable/fromPromise';
 // import 'rxjs/add/operator/switchMap';
 import { combineEpics } from 'redux-observable';
-import { generateActionFn } from '@/utils/action';
+import { generateActionFn } from '@/utils/model/action';
 import { ACTION } from './const';
 
 const epics = [

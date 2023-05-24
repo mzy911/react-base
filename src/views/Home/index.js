@@ -4,7 +4,7 @@ import {
   selectors as listSelectors,
   actions as listActions,
 } from "@/model/list";
-import { generateActionDispatcher } from "@/utils/action";
+import { generateActionDispatcher } from "@/utils/model/action";
 
 const Home = ({ list, fetchList }) => {
   useEffect(() => {

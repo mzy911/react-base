@@ -1,6 +1,6 @@
 import { combineEpics } from "redux-observable";
 import { ACTION } from "./const";
-import { createEpicFromPromise } from "../../utils/epics";
+import { createEpicFromPromise } from "../../utils/model/epics";
 import dataUidEnet from "@/data/list";
 
 const epics = [

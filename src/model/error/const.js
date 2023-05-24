@@ -1,4 +1,4 @@
-import { generateActionTypeCreator } from "@/utils/action";
+import { generateActionTypeCreator } from "@/utils/model/action";
 
 const namespace = "@error";
 const createActionType = generateActionTypeCreator(namespace);

@@ -1,6 +1,6 @@
 import _isUndefined from "lodash/isUndefined";
 import _isArray from "lodash/isArray";
-import { STATUS_LOADING } from "../utils/const";
+import { STATUS_LOADING } from "./const";
 
 export const getPayloadResult = (payload) => payload.result;
 

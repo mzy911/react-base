@@ -1,4 +1,4 @@
-import { generateActionFn } from "@/utils/action";
+import { generateActionFn } from "@/utils/model/action";
 
 import { ACTION } from "./const";
 

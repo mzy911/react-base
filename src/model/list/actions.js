@@ -1,5 +1,5 @@
 import { ACTION } from "./const";
-import { generateActionFn } from "../../utils/action";
+import { generateActionFn } from "../../utils/model/action";
 
 
 // eslint-disable-next-line import/no-anonymous-default-export

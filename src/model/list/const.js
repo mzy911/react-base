@@ -1,4 +1,4 @@
-import { generateActionTypeSetCreator } from "../../utils/action";
+import { generateActionTypeSetCreator } from "../../utils/model/action";
 
 
 // 当前模块前缀

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { ACTION } from "./const";
-import { generateLoadingReducer } from "../../utils/reducers";
+import { generateLoadingReducer } from "../../utils/model/reducers";
 
 
 // 处理返回的数据
