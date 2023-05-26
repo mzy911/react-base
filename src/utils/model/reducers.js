@@ -44,7 +44,7 @@ export const generateLoadingReducer =
     let accessDenied = false;
 
     switch (type) {
-      // 加载中
+      // 加载中-返回结果前的操作
       case actionType:
         if (startHandler) {
           return startHandler(state, payload, STATUS_LOADING.LOADING);
@@ -56,7 +56,6 @@ export const generateLoadingReducer =
 
       // 加载成功
       case actionTypeOk:
-
         if (okHandler) {
           return okHandler(state, payload, STATUS_LOADING.LOADED);
         }
@@ -70,6 +69,7 @@ export const generateLoadingReducer =
 
       // 加载失败
       case actionTypeError:
+        // 无权限时设置 accessDenied 的值为true
         if (
           payload?.error?.getCode &&
           payload.error.getCode() === "AccessDenied"
@@ -77,10 +77,12 @@ export const generateLoadingReducer =
           accessDenied = true;
         }
 
+        // 处理错误的回调
         if (errorHandler) {
           return errorHandler(state, payload, STATUS_LOADING.ERROR);
         }
 
+        // 捕获错误
         if (catchError) {
           return {
             ...state,
@@ -93,6 +95,7 @@ export const generateLoadingReducer =
         return {
           ...state,
           loading: STATUS_LOADING.ERROR,
+          result: payload.error,
           accessDenied,
         };
 

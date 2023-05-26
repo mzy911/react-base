@@ -2,12 +2,11 @@ import BaseError from "./base";
 
 // 接口返回值的错误处理
 // eslint-disable-next-line import/no-anonymous-default-export
-export default class extends BaseError {
+export default class FetchBizError extends BaseError {
   constructor(message, fetchUrl = "", fetchOptions, responseJson) {
     super(message);
-
     this.name = "FetchBizError";
-    this.code = responseJson?.code || "";
+    this.code = responseJson?.status || "";
     this.fetch = {
       url: fetchUrl,
       options: fetchOptions,
@@ -23,6 +22,9 @@ export default class extends BaseError {
 
   // 获取业务错误码
   getCode() {
+    if (this.code === 503) {
+      this.setAccessDeniedCode();
+    }
     return this.code;
   }
 

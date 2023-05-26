@@ -9,6 +9,18 @@ const Home = lazy(() => import(/* webpackChunkName:'home' */ "@/views/Home"));
 const About = lazy(() =>
   import(/* webpackChunkName:'About' */ "@/views/About")
 );
+const Abserve = lazy(() =>
+  import(/* webpackChunkName:'Abserve' */ "@/views/Observe")
+);
+const MergeAll = lazy(() =>
+  import(/* webpackChunkName:'MergeAll' */ "@/views/Observe/MergeAll")
+);
+const MergeMap = lazy(() =>
+  import(/* webpackChunkName:'MergeAll' */ "@/views/Observe/MergeMap")
+);
+const SwitchMap = lazy(() =>
+  import(/* webpackChunkName:'SwitchMap' */ "@/views/Observe/SwitchMap")
+);
 const NoPage = lazy(() =>
   import(/* webpackChunkName:'NoPage' */ "@/views/NoPage")
 );
@@ -33,6 +45,28 @@ const router = [
         label: "监听数据",
         path: "/about",
         element: lazyLoad(<About />),
+      },
+      {
+        label: "Observe",
+        path: "/observe",
+        element: lazyLoad(<Abserve />),
+        children: [
+          {
+            label: "MergeAll",
+            path: "/observe/mergeAll",
+            element: lazyLoad(<MergeAll />),
+          },
+          {
+            label: "MergeMap",
+            path: "/observe/mergeMap",
+            element: lazyLoad(<MergeMap />),
+          },
+          {
+            label: "SwitchMap",
+            path: "/observe/switchMap",
+            element: lazyLoad(<SwitchMap />),
+          },
+        ],
       },
     ],
   },

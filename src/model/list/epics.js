@@ -8,7 +8,7 @@ const epics = [
     dataUidEnet, // 请求数据
     ACTION.FETCH_LIST,
     ACTION.FETCH_LIST_OK,
-    ACTION.FETCH_LIST_ERROR
+    ACTION.FETCH_LIST_ERROR,
   ),
 ];
 // export default epics;

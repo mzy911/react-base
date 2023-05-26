@@ -28,7 +28,10 @@ const menuTree = (routes, res = []) => {
 };
 
 const AppLayout = () => {
-  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState([]);
+  const path = localStorage.getItem("savePath");
+  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState(
+    JSON.parse(path) || ["/"]
+  );
   const [init, setInit] = useState(false);
   const local = useLocation();
   const menuItems = menuTree(router);
@@ -50,7 +53,9 @@ const AppLayout = () => {
       }
     }
 
-    setDefaultSelectedKeys(pathArr);
+    const checkPath = pathArr?.slice(-1);
+    localStorage.setItem("savePath", JSON.stringify(checkPath));
+    setDefaultSelectedKeys(checkPath);
     setInit(true);
   }, [local.pathname]);
   if (!init) return null;
@@ -59,7 +64,7 @@ const AppLayout = () => {
     <Layout>
       <Header className="header">
         <Menu
-          theme="dark"
+          theme="dark" // dark
           mode="horizontal"
           defaultSelectedKeys={defaultSelectedKeys}
           items={menuItems}
@@ -69,7 +74,7 @@ const AppLayout = () => {
       {/* 布局 */}
       <Layout
         style={{
-          padding: "0 24px 24px"
+          padding: "0 24px 24px",
         }}
       >
         <Content

@@ -1,10 +1,10 @@
 import _isFunction from "lodash/isFunction";
 
 // 基础错误
-export default class extends Error {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default class BaseError {
   constructor(message) {
-    super(message);
-
+    // super(message);
     this.message = message;
     this.name = "BaseError";
     this.title = "";

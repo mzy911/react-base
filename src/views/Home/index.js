@@ -6,14 +6,14 @@ import {
 } from "@/model/list";
 import { generateActionDispatcher } from "@/utils/model/action";
 
-const Home = ({ list, fetchList }) => {
-  useEffect(() => {
-    console.log("监听", list);
-  }, [list]);
+const Home = ({ list, fetchList, listLoading }) => {
 
   return (
     <div>
       <h1>首页</h1>
+
+      <div>加载状态：{listLoading}</div>
+
       <button
         type=""
         onClick={() => {
@@ -39,6 +39,7 @@ export default connect(
   (state, props) => {
     return {
       list: listSelectors.getFetchList(state),
+      listLoading: listSelectors.getFetchListLoading(state),
     };
   },
   (dispatch) => {

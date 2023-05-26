@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { selectors as listSelectors } from "@/model/list";
+import { Outlet} from "react-router-dom";
 
-const About = ({ list, fetchList }) => {
-  useEffect(() => {
-    console.log("监听", list);
-  }, [list]);
-
+const Abserve = ({ list, fetchList }) => {
   return (
     <div>
-      <h1>操作</h1>
+      <Outlet></Outlet>
     </div>
   );
 };
@@ -18,4 +15,4 @@ export default connect((state, props) => {
   return {
     list: listSelectors.getFetchList(state),
   };
-})(About);
+})(Abserve);
